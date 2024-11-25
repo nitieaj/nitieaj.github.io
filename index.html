@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML- Audio Translator Application </title>
+    <!--<script src="https://sdk.amazonaws.com/js/aws-sdk-2.247.1.min.js"></script>-->
+    <!--Add script tag to import bundled JavaScript file-->
+    <!--<script type="module" src="js/app.js"></script>-->
+    <!--<script src="main.js"></script>-->
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Upload , Download & Color Picker Buttons</title>
+    <link rel=" stylesheet" type="text/css" href="style.css"/>
+    
+    <link rel="preload" href="small_backgrdimage_1.jpg" as="image" importance="high" media="(max-width: 767px)">
+    <link rel="preload" href="medium_backgrdimage_1.jpg" as="image" importance="high" media="(min-width: 768px) and (max-width: 1024px)">
+    <link rel="preload" href="large_backgrdimage_1.jpg" as="image" importance="high" media="(min-width: 1025px)">
+    
+</head>
+<body>
+    <!--<font face = "Titillium" size = "5">Serverless AI - Audio Transcription Solution</font><br />-->
+    <!--<h2>Serverless AI - Audio Transcription Solution</h2>-->
+    <!--<img src="large_backgrdimage_1.jpg" alt="xxxxxxxxxxxxxxxxxxx" style="object-fit: coverh"/>-->
+    <center>
+        <div class="main">
+            <form>
+                <label for="file"></label>
+                <!--<input type="button" id = "startBtn" value="Start Recording">-->
+                <!--<input type="button" id = "stopBtn" value="Stop Recording" disabled>-->
+                <!--<input type="button" id = "saveBtn" value="Save Recording" disabled>-->
+                <!--<button id="startBtn">Start Recording</button>-->
+                <!--<button id="stopBtn" disabled>Stop Recording</button>-->
+                <!--<button id="saveBtn" disabled>Save Recording</button>-->
+                <button class= "mic-toggle" id="mic">
+                    <span class="material-icons"></span>
+                </button> 
+                <audio  class = "playback" controls></audio>
+                <input type="file" id="file" accept="image/jpg">
+                <div id="feedback"></div>
+                
+
+                
+                <input type="button" onclick="window.s3upload()" value="Upload to NLP Engine">
+                
+                <!--<label for="progress" id="progress-label"></label>-->
+                <!--<progress id="uploadProgressBar" max="100" value="0"></progress>-->
+                <!--<span id="progress-text"></span>-->
+
+                <img id ='progressimg-1'  src='sound.gif' /> 
+                <!--<img id ='progressimg-2'  src='sound.gif' /> -->
+                <!--<img id ='progressimg-3'  src='sound.gif' /> -->
+                <progress id="uploadProgressBartimer" value="0" max="10"></progress>
+                
+
+                <!--<script>
+                setInterval( function(){
+                    let value = document.getElementById("uploadProgressBar").value;
+                    values = Math.min(value + .1, 100) % 100;
+                    document.getElementById("uploadProgressBar").value = values;
+                }, 20 );
+                </script>-->
+
+
+
+
+                <a href="https://9ati7ipxtc.execute-api.us-west-2.amazonaws.com/dev/s3_audio_api_1?bucket=ai-polly-alpha12beta456" target="_blank" download="">
+                    <input type="button" value="Download">
+                </a>
+
+
+                
+
+            </form>
+            
+        </div>
+    </center>
+
+    <left>
+        <div class="container">
+            <form class="search-bar">
+                <input type="text" placeholder="Ask a question" id="user-input" />
+                <button type="button" id="submit-button">Submit</button>
+            </form>
+        </div>
+        <div class="chat-container" id="chat-container">
+            <!-- ChatGPT conversation will be displayed here -->
+        </div>
+
+        <!-- Your script tags and other content -->
+    </left>
+
+    <script src="main.js"></script>
+</body>
+</html>
